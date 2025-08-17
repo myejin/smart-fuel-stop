@@ -12,14 +12,13 @@ flowchart LR
     classDef pastelBlue fill:#a8c5f0,stroke:#333333,stroke-width:2px,color:#333333,font-weight:bold;
     classDef grey fill:#d3d3d3,stroke:#333333,stroke-width:2px,color:#333333,font-weight:bold;
 
-    A[연료 타입, 현재 위치,<br>주행 가능 거리 입력] --> B{"주행 가능 거리"}
-    B -->|안전 주행 가능(> 30)| B1[저렴한 가격 최우선]
-    B -->|안전 주행 불가능| B2[빠른 도착 최우선]
-    B1 --> C[추천 충전소 결과에 따른 알림 발송]
+    A[연료 타입, 현재 위치,<br>주행 가능 거리 입력] --> B{"주행 가능 거리 K"}
+    B -->|안전 주행 가능<br>K >= 30| B1[저렴한 가격 최우선]
+    B -->|불가능<br>K < 30| B2[빠른 도착 최우선]
+    B1 --> C[추천 충전소 목록 응답<br>결과에 따른 노티 발송]
     B2 --> C
-    C --> D[추천 충전소 목록<br>응답]
     
-    class A,C,D defaultNode
+    class A,C defaultNode
     class B grey
     class B1,B2 pastelBlue
 ```
